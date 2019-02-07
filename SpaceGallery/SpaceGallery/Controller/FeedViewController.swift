@@ -10,48 +10,65 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private let searchTextFieldView: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Space Gallery"
-        textField.borderStyle = .roundedRect
-        textField.clearButtonMode = .always
-        return textField
-    }()
-    
-    private let cancelButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(UIColor.blueSystem, for: .normal)
-        return button
+    private let feedView: FeedView = {
+        let view = FeedView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        feedView.delegate = self
+        feedView.galleryCollectionView.delegate = self
+        feedView.galleryCollectionView.dataSource = self
         setupView()
-        activateRegularLayout()
     }
     
     private func setupView() {
-        view.backgroundColor = .white
-        view.addSubview(searchTextFieldView)
-        view.addSubview(cancelButton)
-    }
-    
-    private func activateRegularLayout() {
+        view.addSubview(feedView)
         NSLayoutConstraint.activate([
-            cancelButton.centerYAnchor.constraint(equalTo: searchTextFieldView.centerYAnchor),
-            cancelButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -16),
-            cancelButton.widthAnchor.constraint(equalToConstant: 60),
-            searchTextFieldView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 16),
-            searchTextFieldView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 16),
-            searchTextFieldView.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor, constant: -8)
+            feedView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            feedView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            feedView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            feedView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
             ])
     }
     
 }
 
-extension UIColor {
-    static let blueSystem = UIColor(red: CGFloat(0.0), green: CGFloat(122.0/255.0), blue: CGFloat(1.0), alpha: 1)
+extension FeedViewController: FeedViewDelegate {
+
+    func onCancelSearch() {
+        print("cancel in controller")
+    }
+
 }
+
+extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as! FeedCell
+        return feedCell
+    }
+    
+}
+
+extension FeedViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // FIXME: use a class of constants to get the right size or turn
+        // the height reference dinamically.
+        
+        // 'screenWidth' represents the width of the screen minus 10%
+        let screenWidth = UIScreen.main.bounds.width - ((UIScreen.main.bounds.width * 10.0) / 100.0)
+        
+        return CGSize(width: screenWidth, height: 350.0)
+    }
+    
+}
+
