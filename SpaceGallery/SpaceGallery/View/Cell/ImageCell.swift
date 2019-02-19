@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedCell: UICollectionViewCell {
+class ImageCell: UICollectionViewCell {
     
     static let identifier = "com.leodmgs.spacegallery.FeedCell"
     

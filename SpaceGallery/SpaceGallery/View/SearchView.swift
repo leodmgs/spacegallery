@@ -12,7 +12,7 @@ protocol FeedViewDelegate {
     func onCancelSearch()
 }
 
-class FeedView: UIView {
+class SearchView: UIView {
     
     var delegate: FeedViewDelegate?
     
