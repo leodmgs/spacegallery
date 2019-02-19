@@ -9,9 +9,9 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    
-    private let feedView: FeedView = {
-        let view = FeedView()
+
+    private let feedView: SearchView = {
+        let view = SearchView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -37,7 +37,7 @@ class FeedViewController: UIViewController {
     
 }
 
-extension FeedViewController: FeedViewDelegate {
+extension FeedViewController: SearchViewDelegate {
 
     func onCancelSearch() {
         print("cancel in controller")
@@ -52,7 +52,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as! FeedCell
+        let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
         return feedCell
     }
     

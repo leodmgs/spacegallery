@@ -10,19 +10,23 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
     
-    static let identifier = "com.leodmgs.spacegallery.FeedCell"
+    static let identifier = "com.leodmgs.SpaceGallery.ImageCell.identifier"
     
-    let spaceImage: UIImageView = {
-        let imageView = UIImageView()
+    let thumbnail: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .lightGray
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .lightGray
+        label.numberOfLines = 4
+        label.sizeToFit()
         return label
     }()
     
@@ -32,33 +36,27 @@ class ImageCell: UICollectionViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder: ) has not been implemented")
     }
     
     private func setupView() {
-        backgroundColor = .orange
-        layer.cornerRadius = 15
-        clipsToBounds = true
-        
-        addSubview(spaceImage)
+        addSubview(thumbnail)
         addSubview(descriptionLabel)
         
-        activateRegularConstraints()
-        
-    }
-    
-    private func activateRegularConstraints() {
         NSLayoutConstraint.activate([
+            thumbnail.topAnchor.constraint(equalTo: self.topAnchor),
+            thumbnail.leadingAnchor.constraint(
+                equalTo: self.leadingAnchor),
+            thumbnail.trailingAnchor.constraint(
+                equalTo: self.trailingAnchor),
+            thumbnail.heightAnchor.constraint(equalToConstant: 220),
             
-            spaceImage.topAnchor.constraint(equalTo: self.topAnchor),
-            spaceImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            spaceImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            spaceImage.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor),
-            
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 120),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            descriptionLabel.topAnchor.constraint(
+                equalTo: thumbnail.bottomAnchor, constant: 8),
+            descriptionLabel.leadingAnchor.constraint(
+                equalTo: self.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(
+                equalTo: self.trailingAnchor)
             
             ])
     }

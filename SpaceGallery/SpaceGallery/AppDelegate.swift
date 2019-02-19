@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = FeedViewController()
+//        window?.rootViewController = FeedViewController()
+        window?.rootViewController = SearchViewController()
         
         return true
     }
