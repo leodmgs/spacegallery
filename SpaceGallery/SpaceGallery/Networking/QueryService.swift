@@ -51,7 +51,14 @@ class QueryService {
     private func items(jsonItems: JSON) -> Array<ImageMetadata> {
         var items = Array<ImageMetadata>()
         for item in jsonItems.arrayValue {
-            items.append(ImageMetadata(json: item))
+            do {
+                let imageMetadata = try ImageMetadata(json: item)
+                items.append(imageMetadata)
+            } catch let urlError as URLError {
+                print("[Error]: Bad URL\n\t-> \(urlError.errorUserInfo)")
+            } catch {
+                print("Unexpected error: \(error)")
+            }
         }
         return items
     }
