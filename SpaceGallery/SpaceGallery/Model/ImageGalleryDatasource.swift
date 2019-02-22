@@ -31,8 +31,9 @@ class ImageGalleryDatasource {
     // MARK: if the datasource was updated, an event needs to be performed
     // to the controller to update the view as well.
     
-    func append(dataCollection: Array<ImageMetadata>) {
+    func add(dataCollection: Array<ImageMetadata>) {
         concurrentQueue.sync {
+            unsafeDatasource.removeAll()
             unsafeDatasource.append(contentsOf: dataCollection)
         }
     }
