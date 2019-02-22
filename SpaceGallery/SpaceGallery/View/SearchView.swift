@@ -17,7 +17,7 @@ class SearchView: UIView {
     
     var delegate: SearchViewDelegate?
     
-    private let searchTextFieldView: UITextField = {
+    let searchTextFieldView: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Space Gallery"

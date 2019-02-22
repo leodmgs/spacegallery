@@ -28,23 +28,24 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupDatasource()
     }
     
     private func setupView() {
         DispatchQueue.main.async {
             self.view.backgroundColor = .white
         }
+        searchView.delegate = self
         searchView.galleryCollectionView.delegate = self
         searchView.galleryCollectionView.dataSource = self
+        searchView.searchTextFieldView.delegate = self
         view.addSubview(searchView)
         activateRegularConstraintsForView()
     }
     
-    private func setupDatasource() {
-        queryNetworkService.searchImages(query: "apollo+11", completion: {
+    private func search(query: String) {
+        queryNetworkService.searchImages(query: query, completion: {
             imagesCollection in
-            self.galleryDatasource.append(dataCollection: imagesCollection)
+            self.galleryDatasource.add(dataCollection: imagesCollection)
             DispatchQueue.main.async {
                 // FIXME: don't wait for datasource to load all the contents
                 // from the Internet. A minimum set of data should be loaded
@@ -64,6 +65,41 @@ class SearchViewController: UIViewController {
     }
     
 }
+
+
+extension SearchViewController: SearchViewDelegate {
+    
+    func onCancelSearch() {
+        searchView.searchTextFieldView.resignFirstResponder()
+    }
+    
+}
+
+
+extension SearchViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let searchText = textField.text {
+            let query = searchText.addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed)!
+            if query.count > 1 {
+                search(query: query)
+            }
+        }
+        
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+}
+
 
 // Extension to conform with UICollectionView protocols
 extension SearchViewController:
@@ -90,7 +126,7 @@ extension SearchViewController:
             as! ImageCell
         let imageMetadata = galleryDatasource.index(at: indexPath.item)
         if let imeta = imageMetadata {
-            imageCell.thumbnail.fetchImage(imeta.url)
+            imageCell.thumbnail.fetchImage(imeta.url!)
             let title = imeta.title
             let desc = imeta.description
             let attributedText =

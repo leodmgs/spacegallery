@@ -11,10 +11,8 @@
 		7AB6B5EE220BA567007FE998 /* SpaceGallery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5EC220BA567007FE998 /* SpaceGallery.xcdatamodeld */; };
 		7AB6B5F0220BA56A007FE998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AB6B5EF220BA56A007FE998 /* Assets.xcassets */; };
 		7AB6B5F3220BA56A007FE998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AB6B5F1220BA56A007FE998 /* LaunchScreen.storyboard */; };
-		7AB6B5FE220BA783007FE998 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5FD220BA783007FE998 /* FeedViewController.swift */; };
 		7AB6B600220BB68D007FE998 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5FF220BB68D007FE998 /* SearchView.swift */; };
 		7AB6B605220BBCFC007FE998 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B604220BBCFC007FE998 /* ImageCell.swift */; };
-		7AB6B60E220E34F2007FE998 /* LoadAsyncImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B60D220E34F2007FE998 /* LoadAsyncImageController.swift */; };
 		7AE1AFCF22172D99007A1DB4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1AFCE22172D99007A1DB4 /* CustomImageView.swift */; };
 		7AE1AFD1221B414F007A1DB4 /* ImageMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1AFD0221B414F007A1DB4 /* ImageMetadata.swift */; };
 		7AE1AFD5221B43DB007A1DB4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1AFD4221B43DB007A1DB4 /* SearchViewController.swift */; };
@@ -32,10 +30,8 @@
 		7AB6B5EF220BA56A007FE998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AB6B5F2220BA56A007FE998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AB6B5F4220BA56A007FE998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AB6B5FD220BA783007FE998 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7AB6B5FF220BB68D007FE998 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		7AB6B604220BBCFC007FE998 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
-		7AB6B60D220E34F2007FE998 /* LoadAsyncImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAsyncImageController.swift; sourceTree = "<group>"; };
 		7AE1AFCE22172D99007A1DB4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		7AE1AFD0221B414F007A1DB4 /* ImageMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMetadata.swift; sourceTree = "<group>"; };
 		7AE1AFD4221B43DB007A1DB4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -115,8 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				7AE1AFD4221B43DB007A1DB4 /* SearchViewController.swift */,
-				7AB6B5FD220BA783007FE998 /* FeedViewController.swift */,
-				7AB6B60D220E34F2007FE998 /* LoadAsyncImageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,11 +286,9 @@
 				7AE1AFD1221B414F007A1DB4 /* ImageMetadata.swift in Sources */,
 				7AE1AFCF22172D99007A1DB4 /* CustomImageView.swift in Sources */,
 				7AB6B5EE220BA567007FE998 /* SpaceGallery.xcdatamodeld in Sources */,
-				7AB6B5FE220BA783007FE998 /* FeedViewController.swift in Sources */,
 				7AE1AFDA221B534A007A1DB4 /* ImageGalleryDatasource.swift in Sources */,
 				7AB6B5E6220BA567007FE998 /* AppDelegate.swift in Sources */,
 				7AE1AFD8221B4E38007A1DB4 /* QueryService.swift in Sources */,
-				7AB6B60E220E34F2007FE998 /* LoadAsyncImageController.swift in Sources */,
 				7AB6B605220BBCFC007FE998 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
