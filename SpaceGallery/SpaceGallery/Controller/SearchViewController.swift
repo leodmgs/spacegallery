@@ -45,12 +45,20 @@ class SearchViewController: UIViewController {
     private func search(query: String) {
         queryNetworkService.searchImages(query: query, completion: {
             imagesCollection in
+            if imagesCollection.count == 0 {
+                self.searchView.isSearching(
+                    state: false,
+                    hasResult: false,
+                    msg: "No Results!")
+                return
+            }
             self.galleryDatasource.add(dataCollection: imagesCollection)
             DispatchQueue.main.async {
                 // FIXME: don't wait for datasource to load all the contents
                 // from the Internet. A minimum set of data should be loaded
                 // while the service keep fetching the data.
                 self.searchView.galleryCollectionView.reloadData()
+                self.searchView.isSearching(state: false, hasResult: true)
             }
         })
     }
@@ -88,6 +96,7 @@ extension SearchViewController: UITextFieldDelegate {
             let query = searchText.addingPercentEncoding(
                 withAllowedCharacters: .urlQueryAllowed)!
             if query.count > 1 {
+                self.searchView.isSearching(state: true)
                 search(query: query)
             }
         }

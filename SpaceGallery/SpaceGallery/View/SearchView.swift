@@ -59,10 +59,27 @@ class SearchView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.color = .gray
+        return activityIndicatorView
+    }()
+    
+    private let promptResultLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        return label
+    }()
+    
     private func setupView() {
         addSubview(searchTextFieldView)
         addSubview(cancelButton)
         addSubview(galleryCollectionView)
+        addSubview(activityIndicator)
+        addSubview(promptResultLabel)
     }
     
     private func activateRegularLayout() {
@@ -88,8 +105,41 @@ class SearchView: UIView {
             galleryCollectionView.trailingAnchor.constraint(
                 equalTo: self.trailingAnchor),
             galleryCollectionView.bottomAnchor.constraint(
-                equalTo: self.bottomAnchor)
+                equalTo: self.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(
+                equalTo: self.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(
+                equalTo: self.centerYAnchor),
+            
+            promptResultLabel.centerXAnchor.constraint(
+                equalTo: self.centerXAnchor),
+            promptResultLabel.centerYAnchor.constraint(
+                equalTo: self.centerYAnchor)
             ])
+    }
+    
+    func isSearching(state: Bool, hasResult: Bool = false, msg: String = "") {
+        DispatchQueue.main.async {
+            if state {
+                self.promptResultLabel.isHidden = true
+                self.galleryCollectionView.isHidden = true
+                self.activityIndicator.startAnimating()
+                self.activityIndicator.isHidden = false
+            } else {
+                if hasResult {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.promptResultLabel.isHidden = true
+                    self.galleryCollectionView.isHidden = false
+                } else {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.promptResultLabel.text = msg
+                    self.promptResultLabel.isHidden = false
+                }
+            }
+        }
     }
     
     @objc private func onCancel() {
