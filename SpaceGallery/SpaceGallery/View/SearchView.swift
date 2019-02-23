@@ -131,6 +131,10 @@ class SearchView: UIView {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.promptResultLabel.isHidden = true
+                    self.galleryCollectionView.scrollToItem(
+                        at: IndexPath(row: 0, section: 0),
+                        at: .top,
+                        animated: false)
                     self.galleryCollectionView.isHidden = false
                 } else {
                     self.activityIndicator.stopAnimating()
