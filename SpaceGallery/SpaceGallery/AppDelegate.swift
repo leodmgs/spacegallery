@@ -19,9 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationController = UINavigationController()
+        let searchViewController = SearchViewController()
+        navigationController.viewControllers = [searchViewController]
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-//        window?.rootViewController = FeedViewController()
-        window?.rootViewController = SearchViewController()
         
         return true
     }

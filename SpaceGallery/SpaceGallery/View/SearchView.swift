@@ -20,7 +20,7 @@ class SearchView: UIView {
     let searchTextFieldView: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Space Gallery"
+        textField.placeholder = "Search"
         textField.borderStyle = .roundedRect
         textField.clearButtonMode = .always
         return textField

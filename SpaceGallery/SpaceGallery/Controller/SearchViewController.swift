@@ -31,6 +31,13 @@ class SearchViewController: UIViewController {
     }
     
     private func setupView() {
+        
+        if let navBar = navigationController {
+            navBar.navigationBar.isTranslucent = false
+            navBar.navigationBar.barTintColor = .white
+            navBar.navigationBar.topItem?.title = "Space Gallery"
+        }
+        
         DispatchQueue.main.async {
             self.view.backgroundColor = .white
         }
