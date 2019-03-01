@@ -18,8 +18,13 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginView.delegate = self
         setupView()
         activateRegularConstraints()
+    }
+    
+    private func setupDefaultUserAuth() {
+        
     }
     
     private func setupView() {

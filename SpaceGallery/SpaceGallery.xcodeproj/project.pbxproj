@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7A9AC8CD22288A9300965B9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8CC22288A9300965B9B /* LoginViewController.swift */; };
 		7A9AC8CF22288ACF00965B9B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8CE22288ACF00965B9B /* LoginView.swift */; };
+		7A9AC8D22229D0D400965B9B /* UIColor+SGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8D12229D0D400965B9B /* UIColor+SGColor.swift */; };
+		7A9AC8D42229E5DF00965B9B /* LoginViewController+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8D32229E5DF00965B9B /* LoginViewController+Auth.swift */; };
 		7AB6B5E6220BA567007FE998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5E5220BA567007FE998 /* AppDelegate.swift */; };
 		7AB6B5EE220BA567007FE998 /* SpaceGallery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5EC220BA567007FE998 /* SpaceGallery.xcdatamodeld */; };
 		7AB6B5F0220BA56A007FE998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AB6B5EF220BA56A007FE998 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		07463D7CF04C4F3ACC904BCA /* Pods-SpaceGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceGallery.debug.xcconfig"; path = "Target Support Files/Pods-SpaceGallery/Pods-SpaceGallery.debug.xcconfig"; sourceTree = "<group>"; };
 		7A9AC8CC22288A9300965B9B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7A9AC8CE22288ACF00965B9B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		7A9AC8D12229D0D400965B9B /* UIColor+SGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+SGColor.swift"; sourceTree = "<group>"; };
+		7A9AC8D32229E5DF00965B9B /* LoginViewController+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Auth.swift"; sourceTree = "<group>"; };
 		7AB6B5E2220BA567007FE998 /* SpaceGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AB6B5E5220BA567007FE998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AB6B5ED220BA567007FE998 /* SpaceGallery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpaceGallery.xcdatamodel; sourceTree = "<group>"; };
@@ -75,6 +79,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7A9AC8D02229D0B800965B9B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7A9AC8D12229D0D400965B9B /* UIColor+SGColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7AB6B5D9220BA567007FE998 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +109,7 @@
 		7AB6B5E4220BA567007FE998 /* SpaceGallery */ = {
 			isa = PBXGroup;
 			children = (
+				7A9AC8D02229D0B800965B9B /* Extensions */,
 				7AB6B608220CFC99007FE998 /* Helpers */,
 				7AB6B5FB220BA71E007FE998 /* Model */,
 				7AE1AFD6221B4557007A1DB4 /* Networking */,
@@ -116,6 +129,7 @@
 			children = (
 				7AE1AFD4221B43DB007A1DB4 /* SearchViewController.swift */,
 				7A9AC8CC22288A9300965B9B /* LoginViewController.swift */,
+				7A9AC8D32229E5DF00965B9B /* LoginViewController+Auth.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,11 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9AC8D42229E5DF00965B9B /* LoginViewController+Auth.swift in Sources */,
 				7AE1AFD5221B43DB007A1DB4 /* SearchViewController.swift in Sources */,
 				7AB6B600220BB68D007FE998 /* SearchView.swift in Sources */,
 				7AE1AFD1221B414F007A1DB4 /* ImageMetadata.swift in Sources */,
 				7AE1AFCF22172D99007A1DB4 /* CustomImageView.swift in Sources */,
 				7AB6B5EE220BA567007FE998 /* SpaceGallery.xcdatamodeld in Sources */,
+				7A9AC8D22229D0D400965B9B /* UIColor+SGColor.swift in Sources */,
 				7AE1AFDA221B534A007A1DB4 /* ImageGalleryDatasource.swift in Sources */,
 				7AB6B5E6220BA567007FE998 /* AppDelegate.swift in Sources */,
 				7AE1AFD8221B4E38007A1DB4 /* QueryService.swift in Sources */,
