@@ -20,9 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
+        let loginViewController = LoginViewController()
         let searchViewController = SearchViewController()
-        navigationController.viewControllers = [searchViewController]
-        window?.rootViewController = navigationController
+        navigationController.viewControllers = [
+            loginViewController, searchViewController]
+        window?.rootViewController = loginViewController
         window?.makeKeyAndVisible()
         
         return true
