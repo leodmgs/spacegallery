@@ -10,9 +10,11 @@ import UIKit
 
 protocol LoginViewDelegate {
     
-    func validateAccess(login: String, passw: String) -> Bool
+    func validateAccess(login: String, passw: String, defaults: Bool) -> Bool
     
     func resetAccess()
+    
+    func signUp()
     
 }
 
@@ -88,15 +90,21 @@ class LoginView: UIView {
         textField.layer.borderColor = SGColor.sgWhiteColor.cgColor
         textField.backgroundColor = SGColor.sgTranslucentColor
         textField.isSecureTextEntry = true
-        
         return textField
     }()
     
-    private let resetPasswordButton: UIButton = {
+    private let switchToDefault: CustomSwitchView = {
+        let switchView = CustomSwitchView()
+        switchView.translatesAutoresizingMaskIntoConstraints = false
+        switchView.text = "Use default credentials"
+        return switchView
+    }()
+    
+    private let resetButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setAttributedTitle(NSAttributedString(
-            string: "Reset Password",
+            string: "Reset",
             attributes: [
                 NSAttributedString.Key.font : UIFont.systemFont(
                     ofSize: 14,
@@ -105,6 +113,30 @@ class LoginView: UIView {
             for: .normal)
         button.setTitleColor(SGColor.sgWhiteColor, for: .normal)
         return button
+    }()
+    
+    //MARK: Customize a button with these properties.
+    private let signUpButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setAttributedTitle(NSAttributedString(
+            string: "Sign Up",
+            attributes: [
+                NSAttributedString.Key.font : UIFont.systemFont(
+                    ofSize: 14,
+                    weight: .regular),
+                NSAttributedString.Key.foregroundColor : SGColor.sgWhiteColor]),
+                                  for: .normal)
+        button.setTitleColor(SGColor.sgWhiteColor, for: .normal)
+        return button
+    }()
+    
+    private let optionsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        return stackView
     }()
     
     override init(frame: CGRect) {
@@ -122,15 +154,23 @@ class LoginView: UIView {
         
         loginButton.addTarget(
             self, action: #selector(onLoginTapped), for: .touchUpInside)
-        resetPasswordButton.addTarget(
+        resetButton.addTarget(
             self, action: #selector(onResetPasswordTapped), for: .touchUpInside)
+        signUpButton.addTarget(
+            self, action: #selector(onSignUpTapped), for: .touchUpInside)
         
         addSubview(welcomeTitleLabel)
         addSubview(warningLabel)
         addSubview(loginTextField)
         addSubview(passwTextField)
         addSubview(loginButton)
-        addSubview(resetPasswordButton)
+        addSubview(switchToDefault)
+        
+        optionsStackView.addArrangedSubview(resetButton)
+        optionsStackView.addArrangedSubview(signUpButton)
+        
+        addSubview(optionsStackView)
+        
     }
     
     @objc public func onLoginTapped() {
@@ -139,10 +179,9 @@ class LoginView: UIView {
             let passwordInput = passwTextField.text {
             let granted = delegate.validateAccess(
                 login: loginInput,
-                passw: passwordInput)
-            if granted {
-                print("login successfully")
-            } else {
+                passw: passwordInput,
+                defaults: switchToDefault.option.isOn)
+            if !granted {
                 warningLabel.isHidden = false
                 loginTextField.text = ""
                 passwTextField.text = ""
@@ -151,9 +190,14 @@ class LoginView: UIView {
         }
     }
     
-    @objc public func onResetPasswordTapped() {
+    @objc func onResetPasswordTapped() {
         guard let delegate = delegate else { return }
         delegate.resetAccess()
+    }
+    
+    @objc func onSignUpTapped() {
+        guard let delegate = delegate else { return }
+        delegate.signUp()
     }
     
     private func activateRegularConstraints() {
@@ -198,10 +242,23 @@ class LoginView: UIView {
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             loginButton.widthAnchor.constraint(equalToConstant: 220),
             
-            resetPasswordButton.topAnchor.constraint(
+            switchToDefault.topAnchor.constraint(
                 equalTo: loginButton.bottomAnchor, constant: 22),
-            resetPasswordButton.centerXAnchor.constraint(
-                equalTo: self.centerXAnchor)
+            switchToDefault.centerXAnchor.constraint(
+                equalTo: self.centerXAnchor),
+            switchToDefault.leadingAnchor.constraint(
+                equalTo: loginButton.leadingAnchor),
+            switchToDefault.trailingAnchor.constraint(
+                equalTo: loginButton.trailingAnchor),
+            switchToDefault.heightAnchor.constraint(equalToConstant: 40),
+            
+            optionsStackView.topAnchor.constraint(
+                equalTo: switchToDefault.bottomAnchor, constant: 8),
+            optionsStackView.leadingAnchor.constraint(
+                equalTo: switchToDefault.leadingAnchor),
+            optionsStackView.trailingAnchor.constraint(
+                equalTo: switchToDefault.trailingAnchor),
+            optionsStackView.heightAnchor.constraint(equalToConstant: 40)
             
             ])
     }
