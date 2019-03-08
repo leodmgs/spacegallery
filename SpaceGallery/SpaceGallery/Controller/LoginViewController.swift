@@ -20,15 +20,18 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         loginView.delegate = self
         setupView()
-        activateRegularConstraints()
-    }
-    
-    private func setupDefaultUserAuth() {
-        
+        setupDefaultCredentials()
+        setupGestureRecognizerToHideKeyboard()
     }
     
     private func setupView() {
         view.addSubview(loginView)
+        activateRegularConstraints()
+    }
+    
+    private func setupDefaultCredentials() {
+        UserDefaults.standard.set("admin", forKey: "loginAdmin")
+        UserDefaults.standard.set("admin123", forKey: "passwAdmin")
     }
     
     private func activateRegularConstraints() {
@@ -38,6 +41,23 @@ class LoginViewController: UIViewController {
             loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
+    }
+    
+}
+
+extension LoginViewController {
+    
+    func setupGestureRecognizerToHideKeyboard() {
+        let tapEvent: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        
+        tapEvent.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapEvent)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 }
