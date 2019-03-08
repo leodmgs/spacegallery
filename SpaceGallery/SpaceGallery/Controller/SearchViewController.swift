@@ -36,17 +36,36 @@ class SearchViewController: UIViewController {
             navBar.navigationBar.isTranslucent = false
             navBar.navigationBar.barTintColor = .white
             navBar.navigationBar.topItem?.title = "Space Gallery"
+            
+            let logout = UIBarButtonItem(
+                title: "Logout",
+                style: .plain,
+                target: self,
+                action: #selector(onLogout))
+            
+            navBar.hidesBarsOnSwipe = true
+            self.navigationItem.rightBarButtonItem = logout
+            
         }
         
         DispatchQueue.main.async {
             self.view.backgroundColor = .white
         }
+        
+        galleryDatasource.dropDatasource()
+        searchView.galleryCollectionView.reloadData()
+        
         searchView.delegate = self
         searchView.galleryCollectionView.delegate = self
         searchView.galleryCollectionView.dataSource = self
         searchView.searchTextFieldView.delegate = self
         view.addSubview(searchView)
         activateRegularConstraintsForView()
+    }
+    
+    @objc func onLogout() {
+        let loginViewController = LoginViewController()
+        present(loginViewController, animated: true, completion: nil)
     }
     
     private func search(query: String) {
