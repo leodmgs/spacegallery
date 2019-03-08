@@ -11,6 +11,10 @@
 		7A9AC8CF22288ACF00965B9B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8CE22288ACF00965B9B /* LoginView.swift */; };
 		7A9AC8D22229D0D400965B9B /* UIColor+SGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8D12229D0D400965B9B /* UIColor+SGColor.swift */; };
 		7A9AC8D42229E5DF00965B9B /* LoginViewController+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8D32229E5DF00965B9B /* LoginViewController+Auth.swift */; };
+		7A9AC8D8222B5DF200965B9B /* CustomSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8D7222B5DF200965B9B /* CustomSwitchView.swift */; };
+		7A9AC8DA222B712000965B9B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8D9222B712000965B9B /* SignUpView.swift */; };
+		7A9AC8DC222B722F00965B9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8DB222B722F00965B9B /* SignUpViewController.swift */; };
+		7A9AC8DE222B797900965B9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC8DD222B797900965B9B /* User.swift */; };
 		7AB6B5E6220BA567007FE998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5E5220BA567007FE998 /* AppDelegate.swift */; };
 		7AB6B5EE220BA567007FE998 /* SpaceGallery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6B5EC220BA567007FE998 /* SpaceGallery.xcdatamodeld */; };
 		7AB6B5F0220BA56A007FE998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AB6B5EF220BA56A007FE998 /* Assets.xcassets */; };
@@ -32,6 +36,10 @@
 		7A9AC8CE22288ACF00965B9B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7A9AC8D12229D0D400965B9B /* UIColor+SGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+SGColor.swift"; sourceTree = "<group>"; };
 		7A9AC8D32229E5DF00965B9B /* LoginViewController+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Auth.swift"; sourceTree = "<group>"; };
+		7A9AC8D7222B5DF200965B9B /* CustomSwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSwitchView.swift; sourceTree = "<group>"; };
+		7A9AC8D9222B712000965B9B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		7A9AC8DB222B722F00965B9B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		7A9AC8DD222B797900965B9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7AB6B5E2220BA567007FE998 /* SpaceGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AB6B5E5220BA567007FE998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AB6B5ED220BA567007FE998 /* SpaceGallery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpaceGallery.xcdatamodel; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 			children = (
 				7AE1AFD4221B43DB007A1DB4 /* SearchViewController.swift */,
 				7A9AC8CC22288A9300965B9B /* LoginViewController.swift */,
+				7A9AC8DB222B722F00965B9B /* SignUpViewController.swift */,
 				7A9AC8D32229E5DF00965B9B /* LoginViewController+Auth.swift */,
 			);
 			path = Controller;
@@ -139,6 +148,7 @@
 			children = (
 				7AE1AFD0221B414F007A1DB4 /* ImageMetadata.swift */,
 				7AE1AFD9221B534A007A1DB4 /* ImageGalleryDatasource.swift */,
+				7A9AC8DD222B797900965B9B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +159,8 @@
 				7AB6B603220BBCBC007FE998 /* Cell */,
 				7AB6B5FF220BB68D007FE998 /* SearchView.swift */,
 				7A9AC8CE22288ACF00965B9B /* LoginView.swift */,
+				7A9AC8D9222B712000965B9B /* SignUpView.swift */,
+				7A9AC8D7222B5DF200965B9B /* CustomSwitchView.swift */,
 				7AE1AFCE22172D99007A1DB4 /* CustomImageView.swift */,
 			);
 			path = View;
@@ -302,13 +314,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9AC8D42229E5DF00965B9B /* LoginViewController+Auth.swift in Sources */,
+				7A9AC8DA222B712000965B9B /* SignUpView.swift in Sources */,
 				7AE1AFD5221B43DB007A1DB4 /* SearchViewController.swift in Sources */,
 				7AB6B600220BB68D007FE998 /* SearchView.swift in Sources */,
+				7A9AC8D8222B5DF200965B9B /* CustomSwitchView.swift in Sources */,
 				7AE1AFD1221B414F007A1DB4 /* ImageMetadata.swift in Sources */,
 				7AE1AFCF22172D99007A1DB4 /* CustomImageView.swift in Sources */,
+				7A9AC8DE222B797900965B9B /* User.swift in Sources */,
 				7AB6B5EE220BA567007FE998 /* SpaceGallery.xcdatamodeld in Sources */,
 				7A9AC8D22229D0D400965B9B /* UIColor+SGColor.swift in Sources */,
 				7AE1AFDA221B534A007A1DB4 /* ImageGalleryDatasource.swift in Sources */,
+				7A9AC8DC222B722F00965B9B /* SignUpViewController.swift in Sources */,
 				7AB6B5E6220BA567007FE998 /* AppDelegate.swift in Sources */,
 				7AE1AFD8221B4E38007A1DB4 /* QueryService.swift in Sources */,
 				7A9AC8CF22288ACF00965B9B /* LoginView.swift in Sources */,
